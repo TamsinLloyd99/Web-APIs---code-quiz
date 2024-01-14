@@ -1,0 +1,30 @@
+//1.Timer to start from 75 when start quiz button is pressed
+//2.start quiz button to lead to first question
+//3.Text must change, clickable boxes must appear
+//4.On selection of answer, correct or incorrect must be displayed
+//5.Each question to lead to next question
+//6.End game reference html div #end-screen
+//7.Submit takes player to highscores page
+//8.If start again is pressed, timer to go back to 75
+
+
+//function needed for timer to start on quiz start and log time taken to complete quiz
+function timer () {
+    
+}
+
+
+
+//function needed to say whether answer is correct or false
+function rightOrWrong() {
+
+}
+
+//function needed to store answers
+function storeAnswers() {
+
+}
+
+
+//code needed to replace button text with link to highscores.html
+//addEventListener('click',)
