@@ -16,18 +16,7 @@ var newQuestion4 = document.getElementById('d');
 var rightOrWrong = document.getElementById('wrongOrRight');
 
 
-var timeEl = document.querySelector(".timer");
-var secondsLeft = 0;
-//function needed for timer to start on quiz start and log time taken to complete quiz
-var timerInterval = setInterval (function() {
-secondsLeft++;
-timeEl.textContent = secondsLeft; 
 
-if (secondsLeft === 0) {
-    clearInterval(timerInterval)
-    
-}
-},1000)
 
 
 
@@ -49,8 +38,21 @@ startButton.addEventListener('click', () => {
     fetchData();
 });
 
+
+// Timer variables
+var timeEl = document.querySelector(".timer");
+var secondsLeft = 0;
+
+//function needed for timer to start on quiz start and log time taken to complete quiz
+var timerInterval = setInterval (function() {
+secondsLeft++;
+timeEl.textContent = secondsLeft; 
+
+},1000)
+
 //function needed to change questions
 function newQuestion (data, i){
+Event.preventDefault();
 newQuestionTitle.textContent = data[i].title;
 newQuestion1.textContent = (data[i].choices[0]);
 newQuestion2.textContent = (data[i].choices[1]);
