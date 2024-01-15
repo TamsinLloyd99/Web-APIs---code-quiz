@@ -8,10 +8,18 @@
 //8.If start again is pressed, timer to go back to 75
 
 
+var timeEl = document.querySelector(".timer");
+var secondsLeft = 0;
 //function needed for timer to start on quiz start and log time taken to complete quiz
-function timer () {
+var timerInterval = setInterval (function() {
+secondsLeft++;
+timeEl.textContent = secondsLeft; 
+
+if (secondsLeft === 0) {
+    clearInterval(timerInterval)
     
 }
+},1000)
 
 
 
