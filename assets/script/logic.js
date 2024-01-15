@@ -8,6 +8,15 @@
 //8.If start again is pressed, timer to go back to 75
 
 
+//function for page load
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('questions').style.display = 'block';
+    this.documentElementByIs('end-screen').style.display= 'block';
+});
+
+
+
+
 var timeEl = document.querySelector(".timer");
 var secondsLeft = 0;
 //function needed for timer to start on quiz start and log time taken to complete quiz
@@ -20,18 +29,6 @@ if (secondsLeft === 0) {
     
 }
 },1000)
-
-
-//function to manage the next and previous button
-function buttonsManager (){
-    if (secondsLeft>0){
-        secondsLeft = 0
-    }
-}
-
-
-
-
 
 
 //function needed to say whether answer is correct or false
