@@ -7,6 +7,7 @@
 //7.Submit takes player to highscores page
 //8.If start again is pressed, timer to go back to 75
 
+var startButton = document.getElementById('start');
 var newQuestionTitle =  document.getElementById('question-title');
 var newQuestion1 = document.getElementById('a');
 var newQuestion2 = document.getElementById('b');
@@ -29,14 +30,34 @@ if (secondsLeft === 0) {
 },1000)
 
 
-//function needed to change questions
-function newQuestion (date, i){
-newQuestionTitle.textContent = (data[i].Quiz);
-newQuestion1.textContent = (date[i].option1);
-newQuestion2.textContent = (date[i].option2);
-newQuestion3.textContent = (date[i].option3);
-newQuestion4.textContent = (date[i].option4);
+
+function fetchData() {
+fetch('./assets/script/questions.js')
+.then(response => response.text())
+.then(data => {
+    newQuestion(data, 0);
+    chosenAnswer(data, 0);
+    console.log(data);
+})
+.catch(err => {
+    console.error(err);
+});
 }
+//questions array has been fetched from questions.js
+
+startButton.addEventListener('click', () => {
+    fetchData();
+});
+
+//function needed to change questions
+function newQuestion (data, i){
+newQuestionTitle.textContent = data[i].title;
+newQuestion1.textContent = (data[i].choices[0]);
+newQuestion2.textContent = (data[i].choices[1]);
+newQuestion3.textContent = (data[i].choices[2]);
+newQuestion4.textContent = (data[i].choices[3]);
+}
+
 
 //function to check the chosen answer
 function chosenAnswer (){
@@ -45,18 +66,24 @@ function chosenAnswer (){
         if (answer[i].innerHTML === questions[i].answer) {
         rightOrWrong.textContent = "Correct!";  
         } else {
-        rightOrWrong.textContent = "Incorrect!";
+        rightOrWrong.textContent = "Incorrect! Try Again!";
+        return;
         }
 }
 }
 
+
+
+
+
 //function needed to say whether answer is correct or false
-function rightOrWrong() {
+//if answer is wrong, player cannot continue until they answer correctly
 
-}
 
-//function needed to store answers
-function storeAnswers() {
+
+
+//function needed to store time
+function storeTime() {
 
 }
 
