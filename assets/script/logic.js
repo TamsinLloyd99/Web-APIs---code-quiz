@@ -7,13 +7,11 @@
 //7.Submit takes player to highscores page
 //8.If start again is pressed, timer to go back to 75
 
-
-//function for page load
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('questions').style.display = 'block';
-    this.documentElementByIs('end-screen').style.display= 'block';
-});
-
+var newQuestionTitle =  document.getElementById('question-title');
+var newQuestion1 = document.getElementById('a');
+var newQuestion2 = document.getElementById('b');
+var newQuestion3 = document.getElementById('c');
+var newQuestion4 = document.getElementById('d');
 
 
 
@@ -29,6 +27,16 @@ if (secondsLeft === 0) {
     
 }
 },1000)
+
+
+//function needed to change questions
+function newQuestion (date, 1){
+   newQuestionTitle.textContent = (data[i].Quiz);
+   newQuestion1.textContent = (date[i].option1);
+   newQuestion2.textContent = (date[i].option2);
+   newQuestion3.textContent = (date[i].option3);
+   newQuestion4.textContent = (date[i].option4);
+}
 
 
 //function needed to say whether answer is correct or false

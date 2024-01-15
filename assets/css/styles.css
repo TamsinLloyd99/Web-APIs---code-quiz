@@ -58,13 +58,9 @@ li:nth-child(odd) {
   max-width: 600px;
 }
 
-/* .hide1{
-  display: none;} */
-
-
-/* .hide2 {
+.hide {
   display: none;
-} */
+}
 
 .start {
   text-align: center;
