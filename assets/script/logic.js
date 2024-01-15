@@ -22,6 +22,17 @@ if (secondsLeft === 0) {
 },1000)
 
 
+//function to manage the next and previous button
+function buttonsManager (){
+    if (secondsLeft>0){
+        secondsLeft = 0
+    }
+}
+
+
+
+
+
 
 //function needed to say whether answer is correct or false
 function rightOrWrong() {

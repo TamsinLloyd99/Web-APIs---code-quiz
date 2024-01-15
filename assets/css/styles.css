@@ -58,7 +58,18 @@ li:nth-child(odd) {
   max-width: 600px;
 }
 
-.hide {
+/* .hide1{
+  display: none;} */
+
+/* .prev{
+float: left !important;
+}
+
+.next{
+float: right !important;
+} */
+
+.hide2 {
   display: none;
 }
 
