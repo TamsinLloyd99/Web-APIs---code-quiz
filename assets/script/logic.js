@@ -14,7 +14,8 @@ var newQuestion2 = document.getElementById('b');
 var newQuestion3 = document.getElementById('c');
 var newQuestion4 = document.getElementById('d');
 var rightOrWrong = document.getElementById('wrongOrRight');
-
+var timeEl = document.querySelector(".timer");
+var secondsLeft = 0;
 
 
 
@@ -34,25 +35,20 @@ fetch('./assets/script/questions.js')
 }
 //questions array has been fetched from questions.js
 
+
+//function needed for timer to start on quiz start
 startButton.addEventListener('click', () => {
     fetchData();
-});
+    var timerInterval = setInterval (function() {
+        secondsLeft++;
+        timeEl.textContent = secondsLeft; 
+        
+        },1000)})
 
-
-// Timer variables
-var timeEl = document.querySelector(".timer");
-var secondsLeft = 0;
-
-//function needed for timer to start on quiz start and log time taken to complete quiz
-var timerInterval = setInterval (function() {
-secondsLeft++;
-timeEl.textContent = secondsLeft; 
-
-},1000)
 
 //function needed to change questions
 function newQuestion (data, i){
-Event.preventDefault();
+// Event.preventDefault();
 newQuestionTitle.textContent = data[i].title;
 newQuestion1.textContent = (data[i].choices[0]);
 newQuestion2.textContent = (data[i].choices[1]);
