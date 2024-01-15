@@ -20,5 +20,11 @@ const questions = [
             "all of the above",
         ],
         answer: "all of the above",
-    }]
+    },
+    {
+        title: "String values must be enclosed within ____ when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parentheses"],
+        answer: "quotes",
+    }
+];
     //to be changed

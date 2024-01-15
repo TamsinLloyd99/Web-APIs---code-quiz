@@ -12,7 +12,7 @@ var newQuestion1 = document.getElementById('a');
 var newQuestion2 = document.getElementById('b');
 var newQuestion3 = document.getElementById('c');
 var newQuestion4 = document.getElementById('d');
-
+var rightOrWrong = document.getElementById('wrongOrRight');
 
 
 var timeEl = document.querySelector(".timer");
@@ -30,14 +30,25 @@ if (secondsLeft === 0) {
 
 
 //function needed to change questions
-function newQuestion (date, 1){
-   newQuestionTitle.textContent = (data[i].Quiz);
-   newQuestion1.textContent = (date[i].option1);
-   newQuestion2.textContent = (date[i].option2);
-   newQuestion3.textContent = (date[i].option3);
-   newQuestion4.textContent = (date[i].option4);
+function newQuestion (date, i){
+newQuestionTitle.textContent = (data[i].Quiz);
+newQuestion1.textContent = (date[i].option1);
+newQuestion2.textContent = (date[i].option2);
+newQuestion3.textContent = (date[i].option3);
+newQuestion4.textContent = (date[i].option4);
 }
 
+//function to check the chosen answer
+function chosenAnswer (){
+    for (let i = 0; i < questions.length; i++) {
+        var answer = document.getElementById('choices').children;
+        if (answer[i].innerHTML === questions[i].answer) {
+        rightOrWrong.textContent = "Correct!";  
+        } else {
+        rightOrWrong.textContent = "Incorrect!";
+        }
+}
+}
 
 //function needed to say whether answer is correct or false
 function rightOrWrong() {
