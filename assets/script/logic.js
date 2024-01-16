@@ -15,14 +15,22 @@ var newQuestion3 = document.getElementById('c');
 var newQuestion4 = document.getElementById('d');
 var rightOrWrong = document.getElementById('wrongOrRight');
 var timeEl = document.getElementsByClassName('timer');
-
-
+const hiddenStartScreen = document.querySelectorAll('.hide0');
+const hiddenQuestions = document.querySelectorAll('.hide1');
+const hiddenEndQuiz = document.querySelectorAll('.hide2');
+const hiddenHighScores = document.querySelectorAll('.hide3');
 
 
 startButton.addEventListener('click', startQuiz);
 
 function startQuiz (){
-    //code needed for timer to start on quiz start
+  hiddenStartScreen.forEach(function(element) {
+    element.style.display = 'none';
+  });
+  hiddenQuestions.forEach(function(element) {
+    element.style.display = 'block';
+  });
+     //code needed for timer to start on quiz start//not working
     var timeInterval;
     var currentQuestionsIndex = 0;
     
@@ -34,6 +42,7 @@ function startQuiz (){
         },1000)
     
     newQuestion(currentQuestionsIndex);
+    //not changing to next question
     }
 
 
