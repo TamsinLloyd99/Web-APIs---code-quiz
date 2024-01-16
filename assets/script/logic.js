@@ -93,7 +93,8 @@ function quizEnd (){
 
 
 function highScore() {
- //on quiz end, store time and initials in local storage
- // //addEventListener('click', submit)
+//on quiz end, store time and initials in local storage
+//addEventListener('click', submit)
+// var newHighScore = localStorage.setItem('highScores', JSON.stringify(highScores));
 }
 
