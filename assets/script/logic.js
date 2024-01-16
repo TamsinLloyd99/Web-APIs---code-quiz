@@ -14,13 +14,13 @@ var newQuestion2 = document.getElementById('b');
 var newQuestion3 = document.getElementById('c');
 var newQuestion4 = document.getElementById('d');
 var rightOrWrong = document.getElementById('wrongOrRight');
-var timeEl = document.getElementsByClassName('timer');
+var timeEl = document.getElementById('time');
 const hiddenStartScreen = document.querySelectorAll('.hide0');
 const hiddenQuestions = document.querySelectorAll('.hide1');
 const hiddenEndQuiz = document.querySelectorAll('.hide2');
 const hiddenHighScores = document.querySelectorAll('.hide3');
 
-
+var timeInterval;
 startButton.addEventListener('click', startQuiz);
 
 function startQuiz (){
@@ -30,18 +30,16 @@ function startQuiz (){
   hiddenQuestions.forEach(function(element) {
     element.style.display = 'block';
   });
-     //code needed for timer to start on quiz start//not working
-    var timeInterval;
     var currentQuestionsIndex = 0;
-    
+    //code needed for timer to start on quiz start
     var secondsTaken = 0;
     var timerInterval = setInterval (function() {
         secondsTaken++;
         timeEl.textContent = secondsTaken; 
-        
-        },1000)
+        },1000);
     
     newQuestion(currentQuestionsIndex);
+    currentQuestionsIndex++;
     //not changing to next question
     }
 
@@ -72,14 +70,17 @@ newQuestion1.addEventListener('click', function() {
 
 
 //function to check if the chosen answer matches the correct answer
-function chosenAnswer (questions, choiceIndex){
-        if (question.correctAnswerIndex === choiceIndex) {
-        rightOrWrong.textContent = "Correct!";  
-        } else {
+function chosenAnswer (question, choiceIndex){
+        while (question.correctAnswerIndex !== choiceIndex){
         rightOrWrong.textContent = "Incorrect! Try Again!";
         return;
         }
-}
+        rightOrWrong.textContent = "Correct!";  
+        currentQuestionIndex++;
+        newQuestion(currentQuestionsIndex);
+        } 
+        
+//currently displaying incorrect but not letting player resubmit
 // Inside the function, it checks if the correctAnswerIndex of the current question (referred to as question) is equal to the choiceIndex passed as an argument. If they are equal, it sets the text content of an element called rightOrWrong to "Correct!". 
 // If the correctAnswerIndex and choiceIndex are not equal, it sets the text content of rightOrWrong to "Incorrect! Try Again!" and then returns from the function.
 
