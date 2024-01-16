@@ -27,4 +27,3 @@ const questions = [
         answer: "quotes",
     }
 ];
-    //to be changed

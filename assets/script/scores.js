@@ -3,8 +3,3 @@
 function goToHighScores(){
     
 }
-
-//function needed to save highscores
-function highScore (){
-
-}

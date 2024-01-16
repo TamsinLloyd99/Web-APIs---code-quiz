@@ -14,23 +14,22 @@ var newQuestion2 = document.getElementById('b');
 var newQuestion3 = document.getElementById('c');
 var newQuestion4 = document.getElementById('d');
 var rightOrWrong = document.getElementById('wrongOrRight');
-var timeEl = document.querySelector(".timer");
+var timeEl = document.getElementsByClassName('timer');
 
 
 
 
-
-//function needed for timer to start on quiz start
 startButton.addEventListener('click', startQuiz);
 
 function startQuiz (){
+    //code needed for timer to start on quiz start
     var timeInterval;
     var currentQuestionsIndex = 0;
     
-    var secondsLeft = 0;
+    var secondsTaken = 0;
     var timerInterval = setInterval (function() {
-        secondsLeft++;
-        timeEl.textContent = secondsLeft; 
+        secondsTaken++;
+        timeEl.textContent = secondsTaken; 
         
         },1000)
     
@@ -63,7 +62,7 @@ newQuestion1.addEventListener('click', function() {
 
 
 
-//function to check the chosen answer
+//function to check if the chosen answer matches the correct answer
 function chosenAnswer (questions, choiceIndex){
         if (question.correctAnswerIndex === choiceIndex) {
         rightOrWrong.textContent = "Correct!";  
@@ -72,29 +71,29 @@ function chosenAnswer (questions, choiceIndex){
         return;
         }
 }
-
 // Inside the function, it checks if the correctAnswerIndex of the current question (referred to as question) is equal to the choiceIndex passed as an argument. If they are equal, it sets the text content of an element called rightOrWrong to "Correct!". 
 // If the correctAnswerIndex and choiceIndex are not equal, it sets the text content of rightOrWrong to "Incorrect! Try Again!" and then returns from the function.
 
 
 
 
+// var submitHighScore = document.getElementById('submit');
+// var finalScore = document.getElementById('finalScore');
+// var saveInitials = document.getElementById('initials');
+var highScores;
 
-//function needed to say whether answer is correct or false
-//if answer is wrong, player cannot continue until they answer correctly
-
-
-
-
-//function needed to store time
-function storeTime() {
+function quizEnd (){
+ //Display the final score and allow the user to save their initials and score
+//get time from local storage
+// highScore = secondsTaken;
+// finalScore.textContent = highScore;
 
 }
 
 
-//code needed to replace button text with link to highscores.html
-//addEventListener('click',)
 
-function endQuiz() {
-    // Display the final score and allow the user to save their initials and score
-  }
+function highScore() {
+ //on quiz end, store time and initials in local storage
+ // //addEventListener('click', submit)
+}
+
