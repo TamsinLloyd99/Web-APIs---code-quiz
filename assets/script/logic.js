@@ -58,8 +58,8 @@ questionsEl.removeAttribute('class');
 
 function newQuestion (){
   var currentQuestion = questions[questionIndex];
-  console.log(currentQuestion.title);
-newQuestionTitle.textContent = currentQuestion.title;
+  console.log(currentQuestion.question);
+newQuestionTitle.textContent = currentQuestion.question;
 
 
 // newQuestion1.textContent = currentQuestion.choices[0];
