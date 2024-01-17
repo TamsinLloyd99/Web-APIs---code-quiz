@@ -18,7 +18,7 @@
     <div class="timer">Time: <span id="time">0</span></div>
 
     <div class="wrapper">
-      <div id="start-screen" class="start hide0">
+      <div id="start-screen" class="start">
         <h1>Coding Quiz Challenge</h1>
         <p>
           Try to answer the following code-related questions within the time
@@ -30,20 +30,20 @@
       <!-- Main Page end -->
 
       <!-- Questions page -->
-      <div id="questions" class="hide1">
+      <div id="questions" class="hide">
         <h2 id="question-title"></h2>
         <div id="choices" class="choices">
           <button id="a" class="btn"></button>
           <button id="b" class="btn"></button>
           <button id="c" class="btn"></button>
           <button id="d" class="btn"></button>
-          <h5 id="wrongOrRight" class="hide1"></h5>
+          <h5 id="wrongOrRight"></h5>
         </div>
       </div>
       <!-- Questions page end -->
 
       <!-- End score page -->
-      <div id="end-screen" class="hide2">
+      <div id="end-screen" class="hide">
         <h2>All done!</h2>
         <p>Your final score is <span id="final-score"></span>.</p>
         <p>
@@ -54,7 +54,7 @@
       </div>
 
 
-      <div id="feedback" class="feedback hide3"></div>
+      <div id="feedback" class="feedback hide"></div>
     </div>
 
     <script src="./assets/script/questions.js"></script>
