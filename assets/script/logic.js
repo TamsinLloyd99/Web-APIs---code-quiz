@@ -17,6 +17,7 @@ var choicesEl = document.getElementById('choices');
 var rightOrWrong = document.getElementById('wrongOrRight');
 var timeEl = document.getElementById('time');
 var questionsEl = document.getElementById('questions');
+var endScreenEl = document.getElementById('end-screen');
 // const hiddenStartScreen = document.querySelectorAll('.hide0');
 // const hiddenQuestions = document.querySelectorAll('.hide1');
 // const hiddenEndQuiz = document.querySelectorAll('.hide2');
@@ -24,6 +25,7 @@ var questionsEl = document.getElementById('questions');
 
 var timeInterval;
 var questionIndex = 0;
+
 var secondsTaken = 0;
 startButton.addEventListener('click', startQuiz);
 
@@ -53,15 +55,18 @@ questionsEl.removeAttribute('class');
     }
 
 //bring in questions and options and reuse function
-//function needed to change questions
+
 function newQuestion (){
-var currentQuestion = questions[questionIndex];
+  var currentQuestion = questions[questionIndex];
+  console.log(currentQuestion.title);
 newQuestionTitle.textContent = currentQuestion.title;
-console.log(currentQuestion.choices.length);
+
+
 // newQuestion1.textContent = currentQuestion.choices[0];
 // newQuestion2.textContent = currentQuestion.choices[1];
 // newQuestion3.textContent = currentQuestion.choices[2];
 // newQuestion4.textContent = currentQuestion.choices[3];
+
 choicesEl.innerHTML = "";
 for (let i = 0; i < currentQuestion.choices.length; i++) {
   var choice = currentQuestion.choices[i];
@@ -69,9 +74,13 @@ for (let i = 0; i < currentQuestion.choices.length; i++) {
   btnEl.setAttribute('class', 'choice');
   btnEl.setAttribute('value', choice);
   btnEl.textContent = i + 1 + '. ' + choice;
-  btnEl.onclick = chosenAnswer;
+  btnEl.onclick = chosenAnswer(currentQuestion);
   choicesEl.appendChild(btnEl);
 }
+//creates a button that selects chosen answer
+//does this effect the buttons already in the html?
+
+
 // newQuestion1.addEventListener('click', function() {
 //     chosenAnswer(currentQuestion, 0);
 //   });
@@ -89,11 +98,38 @@ for (let i = 0; i < currentQuestion.choices.length; i++) {
 
 
 //function to check if the chosen answer is wrong, apply penalty
-function chosenAnswer (){
+function chosenAnswer (currentQuestion){
+  console.log(currentQuestion);
+    //not sure if a for loop is needed here - console said i is not defined
+  var correctAnswer = currentQuestion.answer;
+  
+  if (this.value !== correctAnswer){
+    console.log("wrong answer");
+    // rightOrWrong.textContent = "Incorrect! Penalty Time Added! Try Again!";
+    secondsTaken += 5;
+    timeEl.textContent = secondsTaken; 
+    // return;
+  }else{
+    // rightOrWrong.textContent = "Correct!";
+    console.log("correct");
+  }
+  questionIndex++;
+  console.log(questionIndex);
+  if (questionIndex === questions.length) {
+    // quizEnd ();
+    console.log("end of game");
+    } else {
+      console.log("still going");
+    newQuestion();
+    }
+  }
   //1.check if answer is wrong, update time - add penalty
   //2. questionIndex ++
   //3. if you've gone over 100sec or is question Index = question array
-  //if you are out of questions -- end of game else go to next question
+  //if you are out of questions -- end of game, if not go to next question
+  //}
+
+
         // while (question.correctAnswerIndex !== choiceIndex){
         // rightOrWrong.textContent = "Incorrect! Try Again!";
         // return;
@@ -101,7 +137,7 @@ function chosenAnswer (){
         // rightOrWrong.textContent = "Correct!";  
         // currentQuestionIndex++;
         // newQuestion(currentQuestionsIndex);
-        } 
+  
         
 //currently displaying incorrect but not letting player resubmit
 // Inside the function, it checks if the correctAnswerIndex of the current question (referred to as question) is equal to the choiceIndex passed as an argument. If they are equal, it sets the text content of an element called rightOrWrong to "Correct!". 
