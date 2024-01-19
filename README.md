@@ -15,4 +15,6 @@ GIVEN I am taking a code quiz:
 - WHEN the game is over, THEN I can save my initials and score
 
 
-Deployed link: https://github.com/TamsinLloyd99/Web-APIs---code-quiz 
+Deployed link: https://tamsinlloyd99.github.io/Web-APIs---code-quiz/ 
+
+<img width="960" alt="image" src="https://github.com/TamsinLloyd99/Web-APIs---code-quiz/assets/152029548/69c5811b-84c6-4ef1-af64-71aa7477cec4">
