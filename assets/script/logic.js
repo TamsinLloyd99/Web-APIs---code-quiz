@@ -9,19 +9,12 @@
 
 var startButton = document.getElementById('start');
 var newQuestionTitle =  document.getElementById('question-title');
-// var newQuestion1 = document.getElementById('a');
-// var newQuestion2 = document.getElementById('b');
-// var newQuestion3 = document.getElementById('c');
-// var newQuestion4 = document.getElementById('d');
+
 var choicesEl = document.getElementById('choices');
-var rightOrWrong = document.getElementById('wrongOrRight');
+// var rightOrWrong = document.getElementById('wrongOrRight');
 var timeEl = document.getElementById('time');
 var questionsEl = document.getElementById('questions');
 var endScreenEl = document.getElementById('end-screen');
-// const hiddenStartScreen = document.querySelectorAll('.hide0');
-// const hiddenQuestions = document.querySelectorAll('.hide1');
-// const hiddenEndQuiz = document.querySelectorAll('.hide2');
-// const hiddenHighScores = document.querySelectorAll('.hide3');
 
 var timeInterval;
 var questionIndex = 0;
@@ -36,11 +29,6 @@ function startQuiz (){
 
 questionsEl.removeAttribute('class');
   // hiddenStartScreen.forEach(function(element) {
-  //   element.style.display = 'none';
-  // });
-  // hiddenQuestions.forEach(function(element) {
-  //   element.style.display = 'block';
-  // });
     
     //code needed for timer to start on quiz start
     
@@ -62,48 +50,34 @@ function newQuestion (){
 newQuestionTitle.textContent = currentQuestion.question;
 
 
-// newQuestion1.textContent = currentQuestion.choices[0];
-// newQuestion2.textContent = currentQuestion.choices[1];
-// newQuestion3.textContent = currentQuestion.choices[2];
-// newQuestion4.textContent = currentQuestion.choices[3];
-
 choicesEl.innerHTML = "";
-for (let i = 0; i < currentQuestion.choices.length; i++) {
-  var choice = currentQuestion.choices[i];
+// for (let i = 0; i < currentQuestion.choices.length; i++) {
+  //commented out for loop
+currentQuestion.choices.forEach(function (choice, i) {
+  // var choice = currentQuestion.choices[i];
+  //commented out choice variable
   var btnEl = document.createElement('button');
   btnEl.setAttribute('class', 'choice');
   btnEl.setAttribute('value', choice);
+
   btnEl.textContent = i + 1 + '. ' + choice;
-  btnEl.onclick = chosenAnswer(currentQuestion);
+  btnEl.onclick = chosenAnswer;
+
   choicesEl.appendChild(btnEl);
+})
 }
 //creates a button that selects chosen answer
-//does this effect the buttons already in the html?
-
-
-// newQuestion1.addEventListener('click', function() {
-//     chosenAnswer(currentQuestion, 0);
-//   });
-//   newQuestion2.addEventListener('click', function() {
-//     chosenAnswer(currentQuestion, 1);
-//   });
-//   newQuestion3.addEventListener('click', function() {
-//     chosenAnswer(currentQuestion, 2);
-//   });
-//   newQuestion4.addEventListener('click', function() {
-//     chosenAnswer(currentQuestion, 3);
-//   });
-}
 
 
 
 //function to check if the chosen answer is wrong, apply penalty
-function chosenAnswer (currentQuestion){
+function chosenAnswer (){
+  //write the entire array path out -- this was the major issue with the code was carrying the data - the shortcut of the array
   console.log(currentQuestion);
-    //not sure if a for loop is needed here - console said i is not defined
   var correctAnswer = currentQuestion.answer;
   
-  if (this.value !== correctAnswer){
+  if (this.value !== questions[questionIndex].answer){
+    //changed correctAnswer to questions[questionIndex].answer
     console.log("wrong answer");
     // rightOrWrong.textContent = "Incorrect! Penalty Time Added! Try Again!";
     secondsTaken += 5;
@@ -116,8 +90,8 @@ function chosenAnswer (currentQuestion){
   questionIndex++;
   console.log(questionIndex);
   if (questionIndex === questions.length) {
-    // quizEnd ();
-    console.log("end of game");
+    quizEnd ();
+    // console.log("end of game");
     } else {
       console.log("still going");
     newQuestion();
@@ -144,26 +118,38 @@ function chosenAnswer (currentQuestion){
 // If the correctAnswerIndex and choiceIndex are not equal, it sets the text content of rightOrWrong to "Incorrect! Try Again!" and then returns from the function.
 
 
-
-
-// var submitHighScore = document.getElementById('submit');
-// var finalScore = document.getElementById('finalScore');
-// var saveInitials = document.getElementById('initials');
 var highScores;
 
+
+//Display the final score and allow the user to save their initials and score
 function quizEnd (){
- //Display the final score and allow the user to save their initials and score
-//get time from local storage
-// highScore = secondsTaken;
-// finalScore.textContent = highScore;
+  console.log("you have reached the quizEnd function!") //added console log
+  //stop the timer by applying clearInterval and update time on the DOM
+  //hide current screen and unhide the score screen
 
 }
 
+//event listener for the input of initials button
 
-
+//display score and getItem and setItem of LS
 function highScore() {
 //on quiz end, store time and initials in local storage
 //addEventListener('click', submit)
 // var newHighScore = localStorage.setItem('highScores', JSON.stringify(highScores));
+
+//get the value of the input box
+  //set a rule that if input box is not an empty string, withing the rule/conditional the logic should be as follows
+  //create a variable that will getItem of LS or be an empty array -- what this does it defines the variable as an array
+  //why the getItem first, well if the user uses the app over an over again, LS builds up the scores, and there fore LS is not empty, and the code is requiring getItem to be pulled and will be getting it to display.
+
+  //dealing with new scores, create an object that will temporarily take in the values in an objet format of score/time and initials/initials
+  //grab the array variable and take the object info and push it into the array.
+
+  //Array will now store each index asn an object array, the array will have an object index with two key pair values - score and initials and its values from the input of the user.
+
+  //setup local storage to setItem to send the data of the object array to LS.
+
+  //at this point you can redirect the page to highscores page html by method of location.href.
+
 }
 
