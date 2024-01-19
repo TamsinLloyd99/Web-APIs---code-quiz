@@ -1,6 +1,7 @@
 
 //function to lead to highscores after pressing submit button
 var highScoreEL = document.getElementById('highscores');
+var clearBtn = document.getElementById('clear');
 
 function goToHighScores(){
     var highScores = localStorage.getItem('highScores');
@@ -14,3 +15,10 @@ function goToHighScores(){
     // localStorage.getItem('highScores');
     //you are pulling an array.  In order to display an entire array you mush use a for loop.
 }
+function clearHighScores(){
+    localStorage.clear();
+}
+
+
+//link clear highscore button to clear local storage
+clearBtn.addEventListener ('click', clearHighScores); //function clearHighScores
