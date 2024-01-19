@@ -33,7 +33,7 @@ questionsEl.removeAttribute('class');
     
     //code needed for timer to start on quiz start
     
-        timerInterval = setInterval (function() {
+        timeInterval = setInterval (function() {
         secondsTaken++;
         timeEl.textContent = secondsTaken; 
         },1000);
@@ -44,10 +44,11 @@ questionsEl.removeAttribute('class');
 
 //bring in questions and options and reuse function
 function newQuestion (){
-  var currentQuestion = questions[questionIndex];
-  console.log(currentQuestion.question);
-newQuestionTitle.textContent = currentQuestion.question;
+  // var currentQuestion = questions[questionIndex];
+  
+newQuestionTitle.textContent = questions[questionIndex].question;
 //isn't showing up past first question
+console.log(questions[questionIndex].question);
 
 choicesEl.innerHTML = "";
   //commented out for loop
@@ -94,29 +95,20 @@ function chosenAnswer (){
     newQuestion();
     }
   }
-  //1.check if answer is wrong, update time - add penalty
-  //2. questionIndex ++
-  //3. if you've gone over 100sec or is question Index = question array
-  //if you are out of questions -- end of game, if not go to next question
-  //}
 
-
-  
-        
-//currently displaying incorrect but not letting player resubmit
-// Inside the function, it checks if the correctAnswerIndex of the current question (referred to as question) is equal to the choiceIndex passed as an argument. If they are equal, it sets the text content of an element called rightOrWrong to "Correct!". 
-// If the correctAnswerIndex and choiceIndex are not equal, it sets the text content of rightOrWrong to "Incorrect! Try Again!" and then returns from the function.
 
 
 
 //Display the final score and allow the user to save their initials and score
 function quizEnd (){
   console.log("you have reached the quizEnd function!") //added console log
-  clearInterval(timerInterval);
-  timeEl.textContent = secondsTaken;
+  clearInterval(timeInterval);
+  endScreenEl.removeAttribute('class');
+  var finalScore = document.getElementById('final-score');
+  finalScore.textContent = secondsTaken;
 
 questionsEl.setAttribute('class', 'hide');
-endScreenEl.removeAttribute('class');
+
   //stop the timer by applying clearInterval and update time on the DOM
   //hide current screen and unhide the score screen
 
@@ -127,8 +119,20 @@ var initials;
 sumbitEL.addEventListener('click', function(event){
   event.preventDefault();
   initials = initialsEL.value.trim();
-  localStorage.setItem('initials', initials);
-
+  if (initials !== "") {
+    var highScores = JSON.parse(localStorage.getItem('initials')) || [];
+    
+  }
+  
+   //added JSON.stringify to store initials);
+  var tempData = {
+    score: secondsTaken,
+    initials: initials,
+    };
+  highScores.push(tempData);
+  localStorage.setItem('tempdata', JSON.stringify(tempData));
+  window.location.href = 'highscores.html';
+  
 });
 
 
@@ -136,17 +140,7 @@ sumbitEL.addEventListener('click', function(event){
 //display score and getItem and setItem of LS
 function highScore() {
   
-if (initials !== "") {
-  var newHighScore = localStorage.getItem ('initials');
-}
-var tempData = {
-  score: 100,
-  time: 60,
-  initials: 'AB'
-};
-tempData.push(newHighScore);
-localStorage.setItem('tempdata', JSON.stringify(tempData));
-window.location.href = 'highscores.html';
+
 
 //get the value of the input box
   //set a rule that if input box is not an empty string, withing the rule/conditional the logic should be as follows
