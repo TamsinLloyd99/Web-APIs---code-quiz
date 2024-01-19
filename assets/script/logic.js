@@ -11,7 +11,6 @@ var startButton = document.getElementById('start');
 var newQuestionTitle =  document.getElementById('question-title');
 
 var choicesEl = document.getElementById('choices');
-// var rightOrWrong = document.getElementById('wrongOrRight');
 var timeEl = document.getElementById('time');
 var questionsEl = document.getElementById('questions');
 var endScreenEl = document.getElementById('end-screen');
@@ -30,7 +29,7 @@ function startQuiz (){
   startScreenEl.setAttribute('class', 'hide');
 
 questionsEl.removeAttribute('class');
-  // hiddenStartScreen.forEach(function(element) {
+
     
     //code needed for timer to start on quiz start
     
@@ -40,7 +39,6 @@ questionsEl.removeAttribute('class');
         },1000);
     
     newQuestion();
-    // currentQuestionsIndex++;
     }
 
 
@@ -52,10 +50,8 @@ newQuestionTitle.textContent = currentQuestion.question;
 //isn't showing up past first question
 
 choicesEl.innerHTML = "";
-// for (let i = 0; i < currentQuestion.choices.length; i++) {
   //commented out for loop
 currentQuestion.choices.forEach(function (choice, i) {
-  // var choice = currentQuestion.choices[i];
   //commented out choice variable
   var btnEl = document.createElement('button');
   btnEl.setAttribute('class', 'choice');
@@ -80,19 +76,19 @@ function chosenAnswer (){
   if (this.value !== questions[questionIndex].answer){
     //changed correctAnswer to questions[questionIndex].answer
     console.log("wrong answer");
-    // rightOrWrong.textContent = "Incorrect! Penalty Time Added! Try Again!";
+    
     secondsTaken += 5;
     timeEl.textContent = secondsTaken; 
-    // return;
+    
   }else{
-    // rightOrWrong.textContent = "Correct!";
+    
     console.log("correct");
   }
   questionIndex++;
   console.log(questionIndex);
   if (questionIndex === questions.length) {
     quizEnd ();
-    // console.log("end of game");
+   
     } else {
       console.log("still going");
     newQuestion();
@@ -105,13 +101,6 @@ function chosenAnswer (){
   //}
 
 
-        // while (question.correctAnswerIndex !== choiceIndex){
-        // rightOrWrong.textContent = "Incorrect! Try Again!";
-        // return;
-        // }
-        // rightOrWrong.textContent = "Correct!";  
-        // currentQuestionIndex++;
-        // newQuestion(currentQuestionsIndex);
   
         
 //currently displaying incorrect but not letting player resubmit
@@ -139,6 +128,7 @@ sumbitEL.addEventListener('click', function(event){
   event.preventDefault();
   initials = initialsEL.value.trim();
   localStorage.setItem('initials', initials);
+
 });
 
 
@@ -156,7 +146,7 @@ var tempData = {
 };
 tempData.push(newHighScore);
 localStorage.setItem('tempdata', JSON.stringify(tempData));
-location.href = 'highscores.html';
+window.location.href = 'highscores.html';
 
 //get the value of the input box
   //set a rule that if input box is not an empty string, withing the rule/conditional the logic should be as follows

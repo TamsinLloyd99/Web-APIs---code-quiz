@@ -17,6 +17,7 @@ function goToHighScores(){
 }
 function clearHighScores(){
     localStorage.clear();
+    console.log("cleared");
 }
 
 
