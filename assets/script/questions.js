@@ -7,12 +7,12 @@ const questions = [
         answer: "alerts",
     },
     {
-        title: "The condition in an if / else statement is enclosed within ____.",
+        question: "The condition in an if / else statement is enclosed within ____.",
         choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
         answer: "parentheses",
     },
     {
-        title: "Arrays in JavaScript can be used to store ____.",
+        question: "Arrays in JavaScript can be used to store ____.",
         choices: [
             "numbers and strings",
             "other arrays",
@@ -22,7 +22,7 @@ const questions = [
         answer: "all of the above",
     },
     {
-        title: "String values must be enclosed within ____ when being assigned to variables.",
+        question: "String values must be enclosed within ____ when being assigned to variables.",
         choices: ["commas", "curly brackets", "quotes", "parentheses"],
         answer: "quotes",
     }

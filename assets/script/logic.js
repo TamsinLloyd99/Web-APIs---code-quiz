@@ -138,9 +138,6 @@ sumbitEL.addEventListener('click', function(event){
 
 
 //display score and getItem and setItem of LS
-function highScore() {
-  
-
 
 //get the value of the input box
   //set a rule that if input box is not an empty string, withing the rule/conditional the logic should be as follows
@@ -155,6 +152,4 @@ function highScore() {
   //setup local storage to setItem to send the data of the object array to LS.
 
   //at this point you can redirect the page to highscores page html by method of location.href.
-
-}
 
