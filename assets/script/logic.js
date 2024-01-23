@@ -44,7 +44,7 @@ questionsEl.removeAttribute('class');
 
 //bring in questions and options and reuse function
 function newQuestion (){
-  // var currentQuestion = questions[questionIndex];
+  var currentQuestion = questions[questionIndex];
   
 newQuestionTitle.textContent = questions[questionIndex].question;
 //isn't showing up past first question
