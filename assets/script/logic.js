@@ -16,6 +16,8 @@ var questionsEl = document.getElementById('questions');
 var endScreenEl = document.getElementById('end-screen');
 var sumbitEL = document.getElementById('submit');
 var initialsEL = document.getElementById('initials');
+var highScoreEL = document.getElementById('wrapper');
+var olEL = document.getElementById('highscores');
 
 var timeInterval;
 var questionIndex = 0;
@@ -116,11 +118,12 @@ questionsEl.setAttribute('class', 'hide');
 
 var initials;
 //event listener for the input of initials button
-sumbitEL.addEventListener('click', function(event){
-  event.preventDefault();
+sumbitEL.addEventListener('click', function(){
+  // event.preventDefault();
   initials = initialsEL.value.trim();
   if (initials !== "") {
-    var highScores = JSON.parse(localStorage.getItem('initials')) || [];
+    // var highScores = JSON.parse(window.localStorage.getItem('initials')) || [];
+    var highScores = JSON.parse(window.localStorage.getItem('initial')) || [];
     
   }
   
@@ -130,26 +133,34 @@ sumbitEL.addEventListener('click', function(event){
     initials: initials,
     };
   highScores.push(tempData);
-  localStorage.setItem('tempdata', JSON.stringify(tempData));
-  window.location.href = 'highscores.html';
+  console.log(highScores);
+  console.log(tempData);
+  endScreenEl.setAttribute('class', 'hide');
+  highScoreEL.removeAttribute('class');
+  localStorage.setItem('initial', JSON.stringify(highScores));
+  // window.location.href = 'highscores.html';
+  highScores.sort(function(a,b){
+    return b.score - a.score
+})
+for (let i = 0; i < highScores.length; i++) {
+    // const hS = highScores[i];
+    var newScore = document.createElement ('li');
+    newScore.textContent = highScores[i].initials + ' - ' + highScores[i].score;
+    
+    olEL.appendChild(newScore);
+    console.log(newScore);
+}
   
 });
 
+function clearHighScores(){
+  localStorage.removeItem('initial');
+  console.log("cleared");
+  window.location.reload(true);
+}
 
 
-//display score and getItem and setItem of LS
+//link clear highscore button to clear local storage
+clearBtn.addEventListener ('click', clearHighScores); //function clearHighScores
 
-//get the value of the input box
-  //set a rule that if input box is not an empty string, withing the rule/conditional the logic should be as follows
-  //create a variable that will getItem of LS or be an empty array -- what this does it defines the variable as an array
-  //why the getItem first, well if the user uses the app over an over again, LS builds up the scores, and there fore LS is not empty, and the code is requiring getItem to be pulled and will be getting it to display.
-
-  //dealing with new scores, create an object that will temporarily take in the values in an objet format of score/time and initials/initials
-  //grab the array variable and take the object info and push it into the array.
-
-  //Array will now store each index asn an object array, the array will have an object index with two key pair values - score and initials and its values from the input of the user.
-
-  //setup local storage to setItem to send the data of the object array to LS.
-
-  //at this point you can redirect the page to highscores page html by method of location.href.
 
